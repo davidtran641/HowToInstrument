@@ -62,7 +62,7 @@ class ViewController: UICollectionViewController {
     }
 
     func generateThumbnail(title: String, imageName: String) {
-        let cacheFilename = getCachesDirectory().appendingPathComponent(imageName)
+        let cacheFilename = getCachesDirectory().appendingPathComponent(imageName, isDirectory: false)
 
         guard let image = UIImage(named: imageName) else {
             fatalError("Unable to load thumbnail")
