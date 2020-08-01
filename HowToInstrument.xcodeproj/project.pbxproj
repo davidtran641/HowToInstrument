@@ -142,7 +142,9 @@
 				5180B2471F8B868300BFA07E /* Content */,
 				5180B2331F8B857700BFA07E /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		5180B2331F8B857700BFA07E /* Products */ = {
 			isa = PBXGroup;

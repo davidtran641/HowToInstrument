@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import os
 
 typealias Story = (title: String, image: String)
 
@@ -30,9 +31,23 @@ class ViewController: UICollectionViewController {
 
         let headlines = contents.components(separatedBy: "\n")
 
+        let log = OSLog(subsystem: "com.app.demo", category: "LoadImage")
+
+        if #available(iOS 12.0, *) {
+            os_signpost(.begin, log: log, name: "GenerateImage")
+        } else {
+            // Fallback on earlier versions
+        }
+
         for headline in headlines {
             let components = headline.components(separatedBy: "|||")
             generateThumbnail(title: components[0], imageName: components[1])
+        }
+
+        if #available(iOS 12.0, *) {
+            os_signpost(.end, log: log, name: "GenerateImage")
+        } else {
+            // Fallback on earlier versions
         }
 
         for headline in headlines {
