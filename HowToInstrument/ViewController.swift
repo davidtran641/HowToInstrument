@@ -39,10 +39,14 @@ class ViewController: UICollectionViewController {
             // Fallback on earlier versions
         }
 
+        let queue = OperationQueue()
         for headline in headlines {
-            let components = headline.components(separatedBy: "|||")
-            generateThumbnail(title: components[0], imageName: components[1])
+            queue.addOperation {
+                let components = headline.components(separatedBy: "|||")
+                self.generateThumbnail(title: components[0], imageName: components[1])
+            }
         }
+        queue.waitUntilAllOperationsAreFinished()
 
         if #available(iOS 12.0, *) {
             os_signpost(.end, log: log, name: "GenerateImage")
