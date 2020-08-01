@@ -135,9 +135,13 @@ class ViewController: UICollectionViewController {
         present(detailNC, animated: true)
     }
 
-    func getCachesDirectory() -> URL {
+    lazy var cacheDir: URL = {
         let paths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
         return paths[0]
+    }()
+
+    func getCachesDirectory() -> URL {
+        return cacheDir
     }
 
     func love(_ title: String) {
