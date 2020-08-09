@@ -18,8 +18,13 @@ typealias Story = (title: String, image: String)
 class ViewController: UICollectionViewController {
     var newsItems = [Story]()
 
+    var itemSize = CGSize.zero
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+            itemSize = flowLayout.itemSize
+        }
 
         guard let filename = Bundle.main.url(forResource: "headlines", withExtension: nil) else {
             fatalError("Unable to find headlines")
@@ -71,7 +76,7 @@ class ViewController: UICollectionViewController {
 
         let padding: CGFloat = 10
 
-        let drawRect = CGRect(x: 0, y: 0, width: 300, height: 170)
+        let drawRect = CGRect(x: 0, y: 0, width: itemSize.width, height: itemSize.height)
         let titleRect = drawRect.insetBy(dx: padding, dy: padding)
 
         let config = UIGraphicsImageRendererFormat()
