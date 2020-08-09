@@ -127,6 +127,9 @@ class ViewController: UICollectionViewController {
         imageView.layer.borderWidth = 0.5
         cell.layer.shadowOpacity = 0.3
         cell.layer.shadowOffset = CGSize(width: 5, height: 5)
+        let rect = CGRect(x: 0, y: 0, width: itemSize.width, height: itemSize.height)
+        let path = UIBezierPath(rect: rect).cgPath
+        cell.layer.shadowPath = path
         cell.clipsToBounds = false
 
         return cell
