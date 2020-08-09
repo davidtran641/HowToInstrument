@@ -75,6 +75,7 @@ class ViewController: UICollectionViewController {
         let titleRect = drawRect.insetBy(dx: padding, dy: padding)
 
         let config = UIGraphicsImageRendererFormat()
+        config.opaque = true
         let renderer = UIGraphicsImageRenderer(size: drawRect.size, format: config)
 
         let shadow = NSShadow()
